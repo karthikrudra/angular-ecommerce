@@ -1,0 +1,116 @@
+
+
+.container{
+  /* background: radial-gradient(#f8e3e3,#ffd6d6); */
+   box-shadow: 0 2px 0px 10px rgba(0, 0, 0, 0.1px);
+}
+.row{
+/* margin-top: 90px; */
+ /* height: 70vh; */
+}
+.description{
+  position: absolute;
+  bottom: 150;
+  /* top: 100px; */
+  left: 700px;
+  /* border: 2px solid grey; */
+  margin-top: 50px;
+  padding: 20px;
+
+}
+.main-section{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+height: 500px;
+}
+.main-section .img img{
+  height: 300px;
+}
+.main-section .img{
+max-width: 100%;
+padding: 50px 0;
+border-radius:  100px 0 ;
+max-height: 40%;
+ /* transition: transform 0.9s; */
+ transition: ease 0.8s;
+ position: absolute;
+ left: 200px;
+ top: 400;
+ /* height: 100px; */
+ width: 300px;
+
+
+}
+.main-section img:hover{
+scale: 1.02;
+}
+.main-section .top{
+margin-top: 40px;
+
+}
+
+.hideprice{
+color: rgb(100, 96, 96);
+font-size: 20px;
+
+}
+.middle{
+padding-top: 17px;
+}
+.size:hover
+{
+background-color: black;
+color: white;
+}
+.size{
+width: 29px; height: 29px; background-color: white; border: 2px solid black; text-align: center;
+margin-left: 21px;
+margin-top: 10px;
+
+
+}
+.sizeMain p{
+font-size: 27px;
+font-weight: 700;
+}
+.buyone{
+width: 150px;
+/* height: 40px; */
+color: white;
+border-radius: 25px;
+/* background-color: rgb(0, 86, 157); */
+background-color: red;
+border: 2px solid black;
+/* color: black; */
+font-size: 21px;
+/* font-weight: 700px; */
+margin-top: 20px;
+}
+.buyone:hover{
+/* background-color:rgb(21, 124, 208); */
+ background-color: rgb(40, 41, 40);
+scale: 0.98;
+
+}
+.addcart{
+width: 150px;
+height: 40px;
+border-radius: 25px;
+background-color: rgb(238, 208, 42);
+ border: 2px solid black;
+font-size: 21px;
+margin-left: 30px;
+transition: transform 0.5s;
+}
+.addcart:hover{
+background-color:rgb(198, 172, 24) ;
+ scale: 0.98;
+}
+.quantity
+{
+  width: 50px;
+}
+
+
+

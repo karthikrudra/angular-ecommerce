@@ -1,0 +1,119 @@
+
+<div><sellernavbar></sellernavbar></div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .form-button{
+      height: 35px;
+      border: 1px solid blueviolet;
+      color: blueviolet;
+      cursor: pointer;
+    }
+    .my-orders h1{
+      margin-top: 50px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    .my-orders .order-image{
+      width: 100px;
+    }
+    .order-data{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .my-orders{
+      margin-bottom: 100px;
+      width: 80%;
+      margin: 0 auto;
+
+    }
+    .my-orders .row{
+      text-align: center;
+
+    }
+    .col-sm-2{
+      text-align: center;
+      /* margin-top: 25px; */
+
+    }
+    .thead{
+      color: sandybrown;
+    }
+    .top-padding{
+      padding-top: 35px;
+    }
+    .thead{
+
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #f7b1b1;
+  font-weight: normal;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div class="my-orders" *ngIf="userService.ordertd">
+     <h1>My orders</h1>
+  <div class="row thead" >
+
+    <div class="col-sm-2">
+      <span>Image</span>
+    </div>
+     <div class="col-sm-2">
+      <span>Name</span>
+    </div>
+     <div class="col-sm-2">
+      <span>Finalprice</span>
+    </div>
+
+    <div class="col-sm-2">
+      <span>Size</span>
+    </div>
+    <div class="col-sm-2">
+      <span>Quantity</span>
+    </div>
+     <div class="col-sm-2">
+      <span>Action</span>
+    </div>
+  </div>
+
+
+  <div class="row order-data" *ngFor="let item of orders">
+
+    <div class="col-sm-2">
+      <span ><img class="order-image" [src]="item.productImage"></span>
+    </div>
+     <div class="col-sm-2 top-padding">
+      <span>{{item.productName}}</span>
+    </div>
+     <div class="col-sm-2 top-padding">
+      <span>{{item.finalPrice}} <del>{{item.price}}</del></span>
+    </div>
+    <div class="col-sm-2 top-padding">
+      <span>{{item.productSize}}</span>
+    </div>
+    <div class="col-sm-2 top-padding">
+      <span>{{item.orderQuantity}}</span>
+    </div>
+     <div class="col-sm-2 top-padding">
+      <span><button class="form-button" (click)="cancelOrder(item.orderId)">Cancel order</button></span>
+    </div>
+  </div>
+</div>
+<div *ngIf="userService.orderempty" style="text-align: center; margin-top: 100px;">you dont have any booked orders</div>
+</body>
+</html>

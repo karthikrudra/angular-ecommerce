@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    /* Style the section */
+section {
+
+  margin: auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Style the form container */
+.form-container {
+
+  /* background-color: #f6b9b9; */
+
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form heading */
+.create {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style the form paragraph */
+.para {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+/* Style the horizontal line */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* Style the form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Style the form inputs */
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the radio buttons */
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+/* Style the form buttons */
+.sub {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Style the form buttons on hover */
+.sub:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Style the table rows */
+tr {
+  text-align: left;
+}
+
+/* Style the table columns */
+td {
+  padding: 10px;
+}
+
+/* Style the error message */
+.error {
+  color: red;
+  font-size: 14px;
+  flex: none;
+}
+.valid{
+         text-align: left;
+         margin-left: 20px;
+         position: relative;
+         bottom: 17px;
+         color: red;
+}
+.error-container{
+margin-bottom: 19px;
+  height: 50px;
+}
+
+
+  </style>
+</head>
+<body>
+  <section>
+    <div class="form-container" >
+      <h2 class="create">Create a NewAccount</h2>
+      <p class="para">It's Easy and Quick</p>
+      <hr />
+      <form  #form="ngForm" (ngSubmit)="registerUser(form)" >
+        <div [formGroup]="registrationForm">
+        <div >
+          <div class="error-container">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-detail"
+          formControlName="name"
+           [ngClass]="{'is-invalid':(submitted && validate['name'].errors) ||(validate['name'].touched && validate['name'].errors)}"
+          placeholder="Enter Your name.." [(ngModel)]="registration.userName" />
+           <div
+              *ngIf=" submitted || validate['name'].touched && validate['name'].errors"
+          >
+            <div *ngIf="validate['name'].errors?.['required']" class="valid">
+               Name  is required.
+            </div>
+            <div *ngIf="validate['name'].errors?.['minlength']" class="valid">
+              Name must contain atleast 5 characters
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="error-container">
+        <label for="email"></label>
+        <input
+          type="text"
+          id="email"
+          class="form-detail"
+          name="email"
+          formControlName="email"
+             [ngClass]="{'is-invalid':(submitted && validate['email'].errors) ||(validate['email'].touched && validate['email'].errors)}"
+          placeholder="Enter Your email.." [(ngModel)]="registration.mailId" />
+           <div
+             *ngIf=" submitted || validate['email'].touched && validate['email'].errors"
+
+          >
+            <div *ngIf="validate['email'].errors?.['required']" class="valid">
+               Email is required.
+            </div>
+            <div *ngIf="validate['email'].errors?.['email']" class="valid">
+              Enter the valid Email
+            </div>
+          </div>
+          </div >
+          <div class="error-container">
+        <label for="password"></label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          class="form-detail"
+          formControlName="password"
+          [ngClass]="{'is-invalid':(submitted && validate['password'].errors) ||(validate['password'].touched && validate['password'].errors)}"
+          placeholder="Enter New Password..." [(ngModel)]="registration.password" />
+           <div
+            *ngIf=" submitted || validate['password'].touched && validate['password'].errors"
+
+          >
+            <div *ngIf="validate['password'].errors?.['required']" class="valid" >
+              Password is required.
+            </div>
+             <div *ngIf="validate['password'].errors?.['pattern']" class="valid" >
+               Must contain at least one number, one uppercase,one lowercase letter,one special character and at least 9 or more characters
+            </div>
+            </div>
+            </div>
+            <div class="error-container">
+        <label for="number"></label>
+        <input
+          type="text"
+          id="number"
+          name="number"
+          class="form-detail"
+          formControlName="number"
+           [ngClass]="{'is-invalid':(submitted && validate['number'].errors) ||(validate['number'].touched && validate['number'].errors)}"
+          placeholder="Enter Mobile Number" [(ngModel)]="registration.mobileNumber" />
+           <div
+            *ngIf=" submitted || validate['number'].touched && validate['number'].errors"
+
+          >
+            <div *ngIf="validate['number'].errors?.['required']" class="valid" >
+              Password is required.
+            </div>
+             <div *ngIf="validate['number'].errors?.['pattern']" class="valid" >
+               PhoneNumber contain must 10 numbers
+            </div>
+            </div>
+            </div>
+        <table>
+          <tr>
+            <div class="error-container">
+              <td>
+
+
+                    <label for="gender">Gender :</label><br />  </td>
+                   <td>
+                      <input
+                        type="radio"
+                        value="male"
+                        id="gender"
+                        name="gender"
+                        
+                        [(ngModel)]="registration.gender"
+
+                      />Male
+
+                     <input
+                        type="radio"
+                        class="sign"
+                        value="female"
+                        id="gender"
+                        name="gender"
+                        [(ngModel)]="registration.gender"
+
+
+                      />Female
+
+                  </td>
+                  <br /><br />
+                  </div>
+          <tr>
+            <td>
+                 <div class="error-container">
+              <input
+                type="text"
+                id="location"
+                name="location"
+                formControlName="location"
+                 [ngClass]="{'is-invalid':(submitted && validate['location'].errors) ||(validate['location'].touched && validate['location'].errors)}"
+                placeholder="Enter The Location"   [(ngModel)]="registration.location"
+              />
+               <div
+             *ngIf=" submitted || validate['location'].touched && validate['location'].errors"
+
+          >
+            <div *ngIf="validate['location'].errors?.['required']" class="valid">
+              Location  is required.
+            </div>
+
+          </div>
+          </div>
+            </td>
+            <td>
+              <div class="error-container">
+              <input
+                type="text"
+                id="pincode"
+                name="pincode"
+                formControlName="pincode"
+                 [ngClass]="{'is-invalid':(submitted && validate['pincode'].errors) ||(validate['pincode'].touched && validate['pincode'].errors)}"
+                placeholder="Enter The Pincode"   [(ngModel)]="registration.pincode"
+              />
+             <div
+            *ngIf=" submitted || validate['pincode'].touched && validate['pincode'].errors"
+
+          >
+            <div *ngIf="validate['pincode'].errors?.['required']" class="valid" >
+              Password is required.
+            </div>
+             <div *ngIf="validate['pincode'].errors?.['pattern']" class="valid" >
+               Must contain six number
+            </div>
+            </div>
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="error-container">
+              <input
+                type="text"
+                id="city"
+                name="city"
+                formControlName="city"
+                [ngClass]="{'is-invalid':(submitted && validate['city'].errors) ||(validate['city'].touched && validate['city'].errors)}"
+                placeholder="Enter The City"   [(ngModel)]="registration.city"
+              />
+             <div
+             *ngIf=" submitted || validate['city'].touched && validate['city'].errors"
+
+          >
+            <div *ngIf="validate['city'].errors?.['required']" class="valid">
+              City  is required.
+            </div>
+
+          </div>
+          </div>
+            </td>
+            <td>
+              <div class="error-container">
+              <input
+                type="text"
+                id="landmark"
+                name="landmark"
+                formControlName="landmark"
+                [ngClass]="{'is-invalid':(submitted && validate['landmark'].errors) ||(validate['landmark'].touched && validate['landmark'].errors)}"
+                placeholder="Enter The landmark"    [(ngModel)]="registration.landmark"
+              />
+             <div
+             *ngIf=" submitted || validate['landmark'].touched && validate['landmark'].errors"
+
+          >
+            <div *ngIf="validate['landmark'].errors?.['required']" class="valid">
+              Landmark  is required.
+            </div>
+
+          </div>
+          </div>
+            </td>
+          </tr>
+          <tr>
+            <td><button type="submit" class="sub"  [disabled]="registrationForm.invalid">Signup</button></td>
+            <td><button routerLink="/user-login" class="sub">back</button></td>
+          </tr>
+        </table>
+
+      </div>
+
+      </form>
+    </div>
+  </section>
+</body>
+</html>

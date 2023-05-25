@@ -1,0 +1,164 @@
+
+<div><navbar></navbar></div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{
+  box-sizing: border-box;
+}
+
+.payments{
+
+  position: fixed;
+  height: 70%;
+  width: 100%;
+  top: 7%;
+  background-image: url("../../../assets/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: black;
+}
+.payments-main{
+  background-color: #00000079;
+}
+
+
+.payment-sidebar h4{
+
+  font-weight: bold;
+
+}
+.payment-sidebar img{
+width: 150px;
+height: 100px;
+}
+.payment-sidebar img:hover{
+  border: rgb(8, 8, 10);
+}
+
+/* .payment-continer{
+  background: rgb(240, 182, 240);
+} */
+
+#bank img{
+  width: 200px;
+  height: 100px;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+
+.one{
+  box-shadow: 0px 0px 70px red;
+}
+
+
+  </style>
+</head>
+
+
+<body >
+  <div class="container-fluid payments" id="payments-id"  style="width: 100%; height: 90vh;">
+
+    <div class="payments-main w-100 p-4  h-100 ">
+        <div class="row w-100 h-75">
+            <div class="col-4 payment-sidebar p-3 d-flex flex-column flex-wrap justify-content-center align-items-center  ">
+                <div>
+                    <img class=" border border-light border-2 rounded rounded-3" [class.one]="bank==true" (click)="changeBank()" src="https://img.freepik.com/premium-vector/bank-building-money-bank-financing-money-exchange-financial-services-atm-giving-out-money_625536-194.jpg"
+                        alt="">
+                    <h4 class="text-dark mt-2 mb-4 ms-4" [class.active]="bank==true"  (click)="changeBank()" >Banks</h4>
+                </div>
+                <div>
+                    <img class=" border border-light border-2 rounded rounded-3" [class.one]="cards==true"(click)="changeCards()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx-JLx_qBg1ioF0vixekHAmrr6v9Sh3p9HsO11YNwbBA&usqp=CAU&ec=48600113"
+                        alt="">
+                    <h4 class="text-dark mt-2 mb-4 ms-4" (click)="changeCards()">Cards</h4>
+                </div>
+                <div>
+                    <img class=" border border-light border-2 rounded rounded-3"[class.one]="upi==true" (click)="changeUpi()" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/UPI-Logo.png"
+                        alt="">
+                    <h4 class="text-dark mt-2 mb-4 ms-4 " (click)="changeUpi()">UPI</h4>
+                </div>
+                <div>
+                    <button class="btn btn-danger" routerLink="/user-cart">cancel</button>
+                    <!-- <button class="btn btn-warning ms-2">Confirm</button> -->
+                </div>
+            </div>
+            <div *ngIf="bank" class="col-8  payment-continer h-100">
+                <div class="row m-3 p-4 w-100 d-flex  justify-content-center align-items-center" id="bank">
+                       <div class="col-6">
+                            <div  class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/202107/axis-.png" alt="">
+                            </div>
+                            <div class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()"  src="https://logos-download.com/wp-content/uploads/2016/06/Bank_of_Baroda_logo_orange_background.png" alt="">
+                            </div>
+                       </div>
+
+                        <div class="col-6">
+                            <div class=" mx-4 mb-4 pe-4 ">
+                                <img class=" " (click)="payed()" src="https://www.freepnglogos.com/uploads/sbi-logo-png/why-sbi-billion-loan-adani-doesn-make-sense-5.png" alt="">
+                            </div>
+                            <div class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://i.pinimg.com/originals/ff/d5/31/ffd531a6a78464512a97848e14506738.png" alt="">
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+
+            <div *ngIf="cards" class="col-8  payment-continer ">
+                <div class="row m-3 p-4 w-100 d-flex " id="bank">
+                       <div>
+                            <div  class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://freepngimg.com/thumb/atm_card/12-2-atm-card-download-png.png" alt="">
+                            </div>
+                            <div class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://images.pexels.com/photos/210742/pexels-photo-210742.jpeg?cs=srgb&dl=pexels-pixabay-210742.jpg&fm=jpg" alt="">
+                            </div>
+                            <div class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://c1.wallpaperflare.com/preview/586/543/577/cheque-guarantee-card-credit-card-credit-cards-ec-cards.jpg" alt="">
+                            </div>
+                       </div>
+                </div>
+            </div>
+
+            <div *ngIf="upi" class="col-8  payment-continer ">
+                <div class="row m-3 p-4 w-100 d-flex " id="bank">
+                       <div class="col-6">
+                            <div  class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://www.gelq.it/modules/ybc_blog/views/img/post/AmazonPayPOSTEN.jpg" alt="">
+                            </div>
+                            <div class=" mx-4 mb-4 pe-4">
+                                <img class=" " (click)="payed()" src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/11/google-pay-new-logo-1604560912.jpg" alt="">
+                            </div>
+                       </div >
+                       <div class="col-6">
+                        <div  class=" mx-4 mb-4 pe-4">
+                            <img class=" " (click)="payed()" src="https://www.pngitem.com/pimgs/m/3-38170_phonepe-logo-png-phone-pe-transparent-png.png" alt="">
+                        </div>
+                        <div class=" mx-4 mb-4 pe-4">
+                            <img class=" " (click)="payed()" src="https://ptcnews-wp.s3.ap-south-1.amazonaws.com/wp-content/uploads/2019/04/pa.jpg" alt="">
+                        </div>
+
+                   </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>

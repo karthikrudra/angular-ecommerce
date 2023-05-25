@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+  background-image: url(https://www.shutterstock.com/image-photo/blurred-fashion-zone-shopping-mall-260nw-540297547.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+    /* Style the section */
+section {
+
+  margin: auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Style the form container */
+.form-container {
+  background-color: rgba(255, 228, 196, 0.397);
+  /* background-color: #f2f2f2; */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form heading */
+.create {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style the form paragraph */
+.para {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+/* Style the horizontal line */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* Style the form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Style the form inputs */
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the radio buttons */
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+/* Style the form buttons */
+.sub {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Style the form buttons on hover */
+.sub:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+/* Style the table rows */
+tr {
+  text-align: left;
+}
+
+/* Style the table columns */
+td {
+  padding: 10px;
+}
+
+/* Style the error message */
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+  </style>
+</head>
+<body>
+  <section>
+    <div class="form-container">
+      <h2 class="create">Create a NewAccount</h2>
+      <p class="para">It's Easy and Quick</p>
+      <hr />
+      <form  #form="ngForm" (ngSubmit)="addUserAddress(form)" >
+        <label for="name"></label>
+
+       Mobile Number" [(ngModel)]="addAddress.mobileNumber" />
+        <table>
+
+          <tr>
+            <td>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter The Location"   [(ngModel)]="addAddress.location"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="pincode"
+                name="pincode"
+                placeholder="Enter The Pincode"   [(ngModel)]="addAddress.pincode"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter The City"   [(ngModel)]="addAddress.city"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="landmark"
+                name="landmark"
+                placeholder="Enter The landmark"    [(ngModel)]="addAddress.landmark"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><button type="submit" class="sub">Signup</button></td>
+            <td><button routerLink="/login" class="sub">back</button></td>
+          </tr>
+        </table>
+
+
+      </form>
+    </div>
+  </section>
+</body>
+</html>

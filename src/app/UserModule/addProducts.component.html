@@ -1,0 +1,36 @@
+
+
+
+
+
+        <form #form="ngForm" (ngSubmit)="insertProducts(form)" >
+        <div  class="form-group">
+          <input placeholder="ProductName"
+          class="form-control" name="productName" [(ngModel)]="products.productName"
+          />
+
+
+          <input placeholder="Price"
+          class="form-control" name="price" [(ngModel)]="products.price"
+          />
+
+          <input placeholder="FinalPrice"
+          class="form-control" name="finalPrice" [(ngModel)]="products.finalPrice"
+          />
+
+          <input placeholder="ProductQunatity"
+          class="form-control" name="productQunatity" [(ngModel)]="products.productQunatity"
+          />
+
+          <input placeholder="Category"
+          class="form-control" name="category" [(ngModel)]="products.discription"
+          />
+
+          <input placeholder="UserId"
+          class="form-control" name="userId" [(ngModel)]="products.userId"
+          />
+
+          <button type="submit" >Submit</button>
+        </div>
+        </form>
+

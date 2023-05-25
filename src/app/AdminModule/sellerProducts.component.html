@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+      rel="icon"
+      href="https://media.istockphoto.com/photos/old-cafe-sign-in-germany-translation-coffee-shop-picture-id1372002505?b=1&k=20&m=1372002505&s=170667a&w=0&h=XD94UXiK5OHqvm52gJpRM5rAv3FdZmdle0rJmg0R-Qw="
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+</head>
+<body>
+
+  <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+  <div class="header" >
+
+
+    <div class="navbar">
+      <div class="logo">
+        <img src="https://api.logo.com/api/v2/images?logo=logo_9d32745e-3e9d-44c7-94d9-7f0714f09cd9&format=webp&margins=0&quality=60&width=500&background=transparent&u=1681669515" alt="icon" width="50px">
+      </div>
+      <input type="text" class="searchfield" placeholder="Search.." [(ngModel)]="userService.searchQuery">
+    <button class="searchbutton"><span class="material-symbols-outlined searchicon">
+    search
+    </span></button>
+      <nav >
+        <ul id="menuItems">
+          <li><span routerLink="/getallsellers">Home</span></li>
+            <!-- <li><span routerLink="/addProducts">AddProduct</span></li> -->
+             <li><span routerLink="/admincontactus">Contact</span></li>
+
+             <!-- (click)="stopNav()" -->
+            <li><a   *ngIf="userService.login" routerLink="/user-login">login<i
+
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+                    <li><a *ngIf="!userService.login" >logout<i
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+<div class="small-container">
+  <!-- <h2 class="title">Featured Products</h2> -->
+  <div class="row">
+     <div
+        *ngFor="let item of   getViewSellerProducts
+          "
+        class="col-4"
+      >
+        <img
+          [src]="item.productImage" />
+
+          <h3 >
+            {{ item.productName }}
+          </h3>
+
+          <h3 >
+           <i class="fa-solid fa-indian-rupee-sign"></i
+            >{{ item.finalPrice }}
+            <i
+              class="fa-solid fa-indian-rupee-sign del"
+              style="margin-left: 10px; color: gray"
+            ></i
+            >
+            <del style="color: gray" class="del"> {{ item.price }} </del>
+          </h3>
+           <div class="rating">
+        <i class="fa fa-star" ></i>
+         <i class="fa fa-star" ></i>
+        <i class="fa fa-star" ></i>
+        <i class="fa fa-star" ></i>
+       <i class="fa fa-star-o" ></i>
+           </div>
+           <button (click)="deleteProduct(this.item.productId)" class="delete">Delete</button>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,206 @@
+
+<div> <sellernavbar></sellernavbar> </div>
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <style>
+     body {
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 110vh;
+   background-image: url("https://thumbs.dreamstime.com/z/beautiful-men-fashion-wooden-background-sweater-jeans-belt-socks-wallet-watch-brown-leather-shoes-vintage-light-filter-83023042.jpg");
+
+ }
+ body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  background-color: rgba(16, 1, 1, 0.826);
+}
+     /* Style the section */
+ section {
+
+   margin: auto;
+   max-width: 600px;
+   text-align: center;
+ }
+
+ /* Style the form container */
+ .form-container {
+  margin-left: 10%;
+  position: absolute;
+  width: 40%;
+   background-color: rgba(255, 255, 255, 0.5);
+   top: 70px;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.356);
+ }
+
+ /* Style the form heading */
+ .create {
+   font-size: 24px;
+   margin-bottom: 10px;
+ }
+
+ /* Style the form paragraph */
+ .para {
+   font-size: 16px;
+   margin-top: 0px;
+ }
+
+ /* Style the horizontal line */
+ hr {
+   border: none;
+   height: 1px;
+   background-color: #ddd;
+   margin-bottom: 20px;
+ }
+
+ /* Style the form labels */
+ label {
+   display: block;
+   margin-bottom: 5px;
+   text-align: left;
+   font-size: 14px;
+   font-weight: bold;
+ }
+
+ /* Style the form inputs */
+ input[type="text"], select {
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 15px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+ }
+
+ /* Style the radio buttons */
+ button {
+   background-color: transparent;
+   border: none;
+   outline: none;
+   margin-right: 10px;
+ }
+
+ /* Style the form buttons */
+ .sub {
+   background-color: #4CAF50;
+   color: white;
+   padding: 10px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   margin-right: 10px;
+ }
+
+ /* Style the form buttons on hover */
+ .sub:hover {
+   background-color: #3e8e41;
+ }
+
+ /* Style the table */
+ table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-bottom: 20px;
+ }
+
+ /* Style the table rows */
+ tr {
+   text-align: left;
+ }
+
+ /* Style the table columns */
+ td {
+   padding: 10px;
+ }
+
+ /* Style the error message */
+ .error {
+   color: red;
+   font-size: 14px;
+ }
+
+   </style>
+ </head>
+ <body>
+
+                            <!-- Add Products -->
+
+   <section>
+     <div class="form-container" >
+       <h2 class="create">Add Products</h2>
+       <p class="para">It's Easy and Quick</p>
+       <hr />
+       <form  #form="ngForm" (ngSubmit)="insertProducts(form)" >
+        <div >
+         <label for="name"></label>
+
+         <input
+           type="text"
+            name="pname"
+
+           placeholder="Enter product name.." [(ngModel)]="products.productName" />
+
+
+         <label for="email"></label>
+         <input
+           type="text"
+           name="gmail"
+           placeholder="Enter original price.." [(ngModel)]="products.price" />
+
+         <label for="password"></label>
+         <input
+           type="text"
+           name="pwd"
+           placeholder="Enter final price.." [(ngModel)]="products.finalPrice" />
+
+         <label for="number"></label>
+         <input
+           type="text"
+           name="qty"
+           placeholder="Enter productQunatity.." [(ngModel)]="products.productQuantity" />
+
+           <label for="number"></label>
+           <input
+             type="text"
+             class="form-control"
+             name="des"
+             placeholder="Enter description.." [(ngModel)]="products.discription" />
+
+             <label for="number"></label>
+
+               <select  [(ngModel)]="products.category" [ngModelOptions]="{ standalone: true }">
+                <option selected value="men"  >Men</option>
+                <option value="women">Women</option>
+                <option value="kids">Kids</option>
+               </select>
+
+               <label for="number"></label>
+           <input
+             type="text"
+             name="pimg"
+             placeholder="Add productImage url.." [(ngModel)]="products.productImage" />
+
+             <td ><button type="submit" >Add</button>
+              <button routerLink="/sellerView" >back</button></td>
+
+                <td style="color: red;"> {{ empty }} </td>
+              </div>
+              </form>
+            </div>
+          </section>
+
+
+        </body>
+        </html>

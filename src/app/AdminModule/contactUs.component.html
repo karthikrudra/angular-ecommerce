@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+      rel="icon"
+      href="https://media.istockphoto.com/photos/old-cafe-sign-in-germany-translation-coffee-shop-picture-id1372002505?b=1&k=20&m=1372002505&s=170667a&w=0&h=XD94UXiK5OHqvm52gJpRM5rAv3FdZmdle0rJmg0R-Qw="
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+</head>
+<body>
+
+  <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+  <div class="header" >
+
+
+    <div class="navbar">
+      <div class="logo">
+        <img src="https://api.logo.com/api/v2/images?logo=logo_9d32745e-3e9d-44c7-94d9-7f0714f09cd9&format=webp&margins=0&quality=60&width=500&background=transparent&u=1681669515" alt="icon" width="50px">
+      </div>
+
+      <nav >
+        <ul id="menuItems">
+          <li><span routerLink="/getallsellers" >Home</span></li>
+
+             <li><span routerLink="/admincontactus">Contact</span></li>
+
+            <li><a   *ngIf="userService.login" routerLink="/admin-login">login<i
+
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+                    <li><a *ngIf="!userService.login" >logout<i
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Us - Fashio</title>
+    <style>
+        body{
+            position: fixed;
+            width: 100%;
+            height: 110%;
+            text-align: center;
+            /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwa0vxaQrYUSl22uzBMgFrKvjm3xva2lx7Og&usqp=CAU); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background: gainsboro; */
+        }
+        p{
+            color:black;
+        }
+    </style>
+  </head>
+  <body>
+    <br><br><br>
+    <h1>Contact Us</h1>
+    <p>Thank you for your interest in fashio. We appreciate your business and would like to make it as easy as possible for you to get in touch with us.</p>
+    <p>If you have any questions, concerns, or feedback about our products or services, please feel free to contact us using one of the following methods:</p>
+    <h2>Email</h2>
+    <p>You can send an email to our customer service team at <a href="mailto:customerservice@fashio.com">customerservice@fashio.com</a>. We will respond to your email as soon as possible.</p>
+    <h2>Phone</h2>
+    <p>You can call us at <a href="tel:+919999999999">+91 999 999 9999</a>. Our customer service representatives are available from Monday to Friday, 9am to 5pm Eastern Time.</p>
+    <h2>Postal Mail</h2>
+    <p>If you prefer to contact us by mail, you can send your inquiries to the following address:</p>
+    <p>Fashio<br>4th floor<br>SBR Horizon<br>Whitefield,Bengaluru</p>
+    <p>Thank you for choosing fashio as your preferred online retailer. We look forward to hearing from you.</p>
+  </body>
+</html>

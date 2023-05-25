@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://media.istockphoto.com/photos/old-cafe-sign-in-germany-translation-coffee-shop-picture-id1372002505?b=1&k=20&m=1372002505&s=170667a&w=0&h=XD94UXiK5OHqvm52gJpRM5rAv3FdZmdle0rJmg0R-Qw="
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div *ngIf="userService.div">
+      <div >
+        <div class="navbar">
+          <div class="logo">
+            <div class="toggle">
+            <div class="navigation" >
+              <ul>
+                <li class="list active">
+                  <div>
+                    <span class="icon"
+                      ><span class="material-symbols-outlined">
+                        home
+                      </span></span
+                    >
+                    <span class="title-one" routerLink="/showProducts"
+                      >Home</span
+                    >
+                  </div>
+                </li>
+                <li class="list">
+                  <div>
+                    <span class="icon"
+                      ><span class="material-symbols-outlined">
+                        category
+                      </span></span
+                    >
+                    <span
+                      class="title-one"
+                      id="category"
+                      (click)="View()"
+                      *ngIf="!userService.category"
+                      >Category</span
+                    >
+                    <span
+                      class="title-one"
+                      id="category"
+                      (click)="showView()"
+                      *ngIf="userService.category"
+                      >Category</span
+                    >
+                  </div>
+                </li>
+
+                <select
+                  class="dropdown"
+                  id="dropdown"  *ngIf="userService.category"  [(ngModel)]="userService.select" style="margin-left: 65px; color: grey; border: none;appearance: none;  background: radial-gradient(#fff,#ffd6d6); text-align: center; border: 2px solid white; text-align: left; padding-right: 30px;border-radius: 15px; "
+                >
+                  <option selected value="" class="one" >All</option>
+                  <option  value="men" class="one" >Men</option>
+                  <option value="women" class="one" >Women</option>
+                  <option value="kids" class="one" >Kids</option>
+                </select>
+                <li class="list"></li>
+                <li class="list">
+                  <div *ngIf="userService.myOrders" routerLink="/user-orders">
+                    <span class="icon"
+                      ><span class="material-symbols-outlined">
+                        shopping_cart
+                      </span></span
+                    >
+                    <span class="title-one"
+                      >MyOrders</span
+                    >
+                  </div>
+                </li>
+                <li class="list">
+                  <div routerLink="/admin-login">
+                    <span class="icon" *ngIf="adminService.admin">
+                      <span class="material-symbols-outlined">
+                        login
+                      </span></span
+                    >
+                    <span
+                      class="title-one"
+
+                      *ngIf="adminService.admin"
+                      >Admin
+                    </span>
+                  </div>
+                </li>
+                <li class="list">
+                  <div routerLink="/seller-login">
+                    <span class="icon"
+                    *ngIf="adminService.seller" ><span class="material-symbols-outlined">
+                        login
+                      </span></span
+                    >
+                    <span class="title-one" routerLink="/seller-login"
+                    *ngIf="adminService.seller" >Seller</span
+                    >
+                  </div>
+                </li>
+
+                <li class="list">
+                  <div (click)="getTotalLocations()">
+                  <span class="icon"
+                    ><i class="fa-solid fa-truck"></i></span
+                  >
+                  <span
+                    class="title-one"
+                    id="instant"
+                    (click)="ViewInstant()"
+                    *ngIf="userService.instant"
+                    >Instant Delivery</span
+                  >
+                  <span
+                    class="title-one"
+                    id="instant"
+                    (click)="showViewInstant()"
+                    *ngIf="!userService.instant"
+                    >Instant Delivery</span
+                  >
+
+
+                </div>
+                </li>
+                  <select
+                          class="dropdown"
+                          id="dropdown" [(ngModel)]="userService.city" (click)="getProductsInLoc()" *ngIf="userService.instant" style="margin-left: 65px; color: grey; border: none;appearance: none;  background: radial-gradient(#fff,#ffd6d6); text-align: center; border: 2px solid white; text-align: left; padding-right: 30px;border-radius: 15px; "
+                        >
+                          <option selected value="all" selected class="one" >All</option>
+                          <option  *ngFor="let item of locations">{{item}}</option>
+
+                        </select>
+
+              </ul>
+            </div>
+
+
+              <span
+                class="material-symbols-outlined open"
+                id="menu"
+                (click)="showMenu()"
+                *ngIf="!this.menu"
+              >
+                menu
+              </span>
+              <span
+                class="material-symbols-outlined open"
+                id="menu"
+                (click)="hideMenu()"
+                *ngIf="this.menu"
+              >
+                menu
+              </span>
+
+                  
+            </div>
+
+            <img
+              src="https://api.logo.com/api/v2/images?logo=logo_9d32745e-3e9d-44c7-94d9-7f0714f09cd9&format=webp&margins=0&quality=60&width=500&background=transparent&u=1681669515"
+              alt="icon"
+              width="60px"
+
+            />
+          </div>
+          <input
+            type="text"
+            class="searchfield"
+            placeholder="Search.."
+            [(ngModel)]="SearchQuery"
+          />
+
+          <nav>
+            <ul id="menuItems">
+              <li><span ><a href="">Home</a> </span></li>
+
+              <li><a routerLink="/about">About</a></li>
+              <li><a href=""  routerLink="/contactus">Contact</a></li>
+              <li >
+
+                <div  routerLink="/user-cart" class="cart-icon">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span class="cart-count">{{ userService.cartSize }}</span>
+                </div>
+              </li>
+
+              <li> &nbsp;&nbsp;&nbsp;
+                <a *ngIf="userService.login" routerLink="/user-login"
+                  >login<i class="fa-solid fa-user" style="padding-right: 50px">
+                  </i
+                ></a>
+              </li>
+              <li>
+                <a *ngIf="!userService.login" (click)="logout()"
+                  >logout<i
+                    class="fa-solid fa-user"
+                    style="padding-right: 50px"
+                  >
+                  </i
+                ></a>
+              </li>
+            </ul>
+          </nav>
+
+          <i class="fa fa-bars menu-icon" onclick="menutoggle()"></i>
+        </div>
+
+      </div>
+    </div>
+    <div   style="padding-top: 50px;position: relative; top: 10px;" *ngIf="userService.corousel" id="home" >
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+  <div class="carousel-inner" >
+    <div class="carousel-item active" data-bs-interval="1500" >
+      <img src="assets/save9.png" alt="img" width="100%" height="350px">
+    </div>
+    <div class="carousel-item" data-bs-interval="1500">
+      <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Fashion/Event/Gateway/MayART/Event/Hero/PC-Unrec-3000-AF._CB591081811_.jpg" class="d-block w-100" alt="..." width="100%" height="350px">
+    </div>
+    <div class="carousel-item" data-bs-interval="1500">
+      <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img2020/img21/GWUnrec_BOB/WA3000._CB592962828_.jpg" class="d-block w-100" alt="..." width="100%" height="350px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+
+    <!-- ------------------------------featured Products----------------------------- -->
+
+    <div>
+      <div class="small-container">
+        <h2 class="title">Featured Products</h2>
+        <div class="row">
+          <div *ngFor="let item of getAllProducts" class="col-4" [routerLink]="['/selectedproduct',item.productId]">
+            <img [src]="item.productImage"   routerLinkActive="router-link-active" />
+
+            <h3 class="productName" >
+              {{ item.productName }}
+            </h3>
+
+            <h3 class="productPrice" style="font-size: 21px;">
+              <i class="fa-solid fa-indian-rupee-sign"></i>{{ item.finalPrice }}
+              <i
+                class="fa-solid fa-indian-rupee-sign del"
+                style="margin-left: 10px; color: gray"
+              ></i>
+              <del style="color: gray" class="del"> {{ item.price }} </del>
+              <h6 style="color: crimson;">Discount:({{item.discount}}%)</h6>
+            </h3>
+            <!-- <h3  class="productName">
+               ({{ ((item.price - item.finalPrice) / item.price * 100) | number: '1.0-2' }}% OFF)
+            </h3> -->
+            <!-- <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div> -->
+
+            <br />
+
+            <div *ngIf="userService.myOrders">
+
+
+            </div>
+            <div >
+
+              <div *ngIf="userService.buyNow" class="d-flex">
+                <div class="text-center">
+                  <button
+                    class="btn btn-primary"
+                  >
+                   view productdetails
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- testimonial -->
+
+    <div class="testimonial">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              Its really a best application for shopping. Infact my sister as well using it for shopping. If I decides to buy clothes so I buy it from here. I have bought a sherwani from there.
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOxtGTmf-K7Ub6PSyYqHbjN9V9WeM60yg58w&usqp=CAU"
+              alt=""
+            />
+            <h3>Tushar Satpute</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              really good service good responose from them when any information is needed
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRijgOF4fcmw2CesNfo_Nm5iMbwbvP8hyzxvg&usqp=CAU"
+              alt=""
+            />
+            <h3>Rahul Dwivedi</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              this application is very helpfull to sell my produccts it is easy to sell my products through this platform
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+            </div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7cJ5SWQa_IRveRVK7hRTnfz7_JWZ2LfAADy05lSRRBT3C3KoidG0dmbtTpD4KXXbIrsg&usqp=CAU"
+              alt=""
+            />
+            <h3>Sean Parker</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------brands-------- -->
+<!--
+    <div class="brands">
+      <div class="small-container">
+        <div class="row">
+          <div class="col-5">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Ng55y7W08nJjF82xyWNHUKUDafFrMUCaKgepKXygrVfcF1eTZ4dbiw&s=0"
+            />
+          </div>
+          <div class="col-5">
+            <img
+              src="https://orissadiary.com/wp-content/uploads/2020/12/New-PhonePe-Logo.png"
+              alt=""
+            />
+          </div>
+          <div class="col-5">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQce3y4jsf9Z889cK3gQ-UWKPp4jGO3EA5dAd_YNeM8-Fzt_fJbcHXZp-Mi62RFtI2CUUA&usqp=CAU"
+              alt=""
+            />
+          </div>
+          <div class="col-5">
+            <img
+              src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
+              alt=""
+            />
+          </div>
+          <div class="col-5">
+            <img
+              src="https://bfsi.eletsonline.com/wp-content/uploads/2019/09/RuPay-debit-card.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- /* ------------------------footer----------------- */ -->
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3 class="download">Download our App</h3>
+            <p>Download app for Android and ios mobile phone.</p>
+            <div class="app-logo">
+              <img
+                src="https://brandlogos.net/wp-content/uploads/2016/09/get-it-on-google-play-preview-400x400.png"
+                alt=""
+                class="google-pay"
+              />
+            </div>
+          </div>
+          <div class="footer-col-2">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Download_on_the_App_Store_Badge_TR_RGB_blk.svg/151px-Download_on_the_App_Store_Badge_TR_RGB_blk.svg.png?20190418212417"
+              alt=""
+            />
+            <p>
+              Download app for Android and ios mobile phone. Lorem ipsum dolor
+              sit amet consectetur adipisicing.
+            </p>
+          </div>
+          <div class="footer-col-3">
+            <h3>Usefull Links</h3>
+            <ul>
+              <li>Coupons</li>
+              <li>Blog Post</li>
+              <li>Return Policy</li>
+              <li>Join Affiliate</li>
+            </ul>
+          </div>
+          <div class="footer-col-4">
+            <h3>Follow Us</h3>
+            <ul>
+              <li>Facebook</li>
+              <li>Twitter</li>
+              <li>Instagram</li>
+              <li>YouTube</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">Copyright 2020 - Banglore</p>
+      </div>
+    </div>
+
+    <script>
+      var menuItems = document.getElementById("menuItems");
+      menuItems.style.maxHeight = "0px";
+      function menutoggle() {
+        if ((menuItems.style.maxHeight = "0px")) {
+          menuItems.style.maxHeight = "200px";
+        } else {
+          menuItems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
+</html>

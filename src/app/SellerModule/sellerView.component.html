@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+      rel="icon"
+      href="https://media.istockphoto.com/photos/old-cafe-sign-in-germany-translation-coffee-shop-picture-id1372002505?b=1&k=20&m=1372002505&s=170667a&w=0&h=XD94UXiK5OHqvm52gJpRM5rAv3FdZmdle0rJmg0R-Qw="
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+</head>
+<body>
+
+
+
+
+  <div class="header" >
+
+
+    <div class="navbar">
+      <div class="logo">
+        <img src="https://api.logo.com/api/v2/images?logo=logo_9d32745e-3e9d-44c7-94d9-7f0714f09cd9&format=webp&margins=0&quality=60&width=500&background=transparent&u=1681669515" alt="icon" width="50px">
+      </div>
+      <input type="text" class="searchfield" placeholder="Search.." [(ngModel)]="userService.searchQuery">
+
+      <nav >
+        <ul id="menuItems">
+
+            <li><span routerLink="/addProducts">Addproduct</span></li>
+            <li><span routerLink="/sellerorders">Orders</span></li>
+             <li><span routerLink="/sellercontactus">Contact</span></li>
+
+            <li><a   *ngIf="userService.login" routerLink="/seller-login">login<i
+
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+                    <li><a *ngIf="!userService.login" (click)="logout()">logout<i
+                      class="fa-solid fa-user"
+                      style="padding-right: 50px"
+                    >
+                    </i></a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+                      <!-- FEATURED PRODUCTS -->
+<!-- <div >
+      <div class="small-container">
+
+        <div class="row">
+           <div
+              *ngFor="let item of   getAllProducts
+                "
+              class="col-4"
+            >
+              <img
+                [src]="item.productImage" />
+
+                <h3 >
+                  {{ item.productName }}
+                </h3>
+
+                <h3 >
+                 <i class="fa-solid fa-indian-rupee-sign"></i
+                  >{{ item.finalPrice }}
+                  <i
+                    class="fa-solid fa-indian-rupee-sign del"
+                    style="margin-left: 10px; color: gray"
+                  ></i
+                  >
+                  <del style="color: gray" class="del"> {{ item.price }} </del>
+                </h3>
+                 <div class="rating">
+              <i class="fa fa-star" ></i>
+               <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+             <i class="fa fa-star-o" ></i>
+            </div>
+
+               <br>
+               <div style="display: flex;">
+                <div>
+           <button (click)="deleteProduct(this.item.productId)" style="padding: 10px 25px; border-radius: 10px; background-color: red; margin-right:20px ; margin-left: 15px;">Delete</button>
+          </div>
+          <div>
+           <button style="padding: 10px 10px; border-radius: 10px;background-color: orangered; margin-right:20px ;"
+           [routerLink]="['/editProducts',item.productId]">EditProduct</button>
+
+          </div>
+
+          </div>
+
+              </div>
+            </div>
+          </div>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+
+      width: 100%;
+
+    }
+    .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card{
+      width: 63%;
+      margin-bottom: 20px;
+      height: 380px;
+      margin: 50px;
+      box-shadow: 5px 5px 20px black;
+      overflow: hidden;
+      padding-right: 30px;
+    }
+    .image-design{
+      height: 600px;
+      width: 350px;
+      border-radius: 3px;
+       transition: .5s;
+    }
+    .intro{
+      height: 250px;
+      width: 350px;
+      padding: 6px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 219px;
+      background: rgba(27, 27, 27, 0.5);
+      color: orangered;
+      transition: .5s;
+    }
+    .price{
+      padding-left: 68px;
+
+    }
+    p{
+      font-size: 20px;
+      margin-top: 20px;
+      color: white;
+    }
+    span{
+      font-weight: bold;
+    }
+    .card:hover{
+      cursor: pointer;
+    }
+     .card:hover .intro{
+      height: 220px;
+      bottom: 240px;
+
+     }
+
+       .card:hover .image-design{
+        transform: scale(1.1) rotate(-3deg) ;
+       }
+       .btn{
+        padding: 10px 20px;
+        margin-right: 25px;
+
+       }
+       .button{
+         display: none;
+         opacity: 0;
+         transition: .5s;
+
+       }
+       .card:hover .button{
+        opacity: 1;
+        display: contents;
+        display: flex;
+        position: relative;
+        bottom: 90px;
+        margin-left: 9px;
+       }
+       .show-button{
+        padding-left: 10px;
+        padding-top: 21px;
+
+       }
+       .card:hover .show-button{
+        visibility: hidden;
+        opacity: 0;
+
+       }
+       .pname{
+        position: relative;
+     /* left: 90px; */
+     bottom: 40px;
+     text-align: center;
+     right: 30px;
+       }
+
+  </style>
+   <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+
+<body >
+  <div class="row" style="margin-top: 65px;">
+    <div class="col-md-4 main-card" *ngFor="let item of getAllProducts">
+      <div class="card">
+        <img class="image-design"  [src]="item.productImage" alt="">
+        <div class="intro">
+
+          <div class="show-button">
+            <p>{{ item.discription }}</p>
+            <h3 class="price">
+              <i class="fa-solid fa-indian-rupee-sign" style="font-size: 21px;"></i
+              >{{ item.finalPrice }}
+              <i class="fa-solid fa-indian-rupee-sign del" style="margin-left: 10px; color: whitesmoke; font-size: 18px;"></i
+              ><del style="color: whitesmoke; font-size: 18px;" class="del">({{ item.price }})</del>
+            </h3>
+          </div>
+          <div class="button">
+            <button class="btn btn-warning" [routerLink]="['/editProducts',item.productId]">Edit Product</button>
+            <button class="btn btn-danger" style="color: black;" (click)="deleteProduct(item.productId)">Delete Product</button>
+          </div>
+        </div>
+
+      </div>
+      <h2 class="pname">{{ item.productName }}</h2>
+      <h3 class="pname">Quantity : {{ item.productQuantity }}</h3>
+    </div>
+
+  </div>
+</body>
+
+</html>
+

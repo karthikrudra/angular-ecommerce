@@ -1,0 +1,81 @@
+
+<div> <navbar></navbar> </div>
+
+
+
+
+<div  class="small-container cart-page">
+
+
+  <table >
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>SubTotal</th>
+    </tr>
+
+
+      <tr  *ngFor="let item of getCart" >
+      <td >
+        <div class="cart-info">
+          <img src={{item.productImage}} alt="">
+          <div class="content">
+            <p>
+              {{item.productName}}
+            </p>
+            <small>
+              price:  <i class="fa-solid fa-indian-rupee-sign"></i
+              > <del>{{item.price}}</del></small>
+              <br><small>
+                final price:  <i class="fa-solid fa-indian-rupee-sign"></i
+                >{{item.totalPrice}}</small>
+                <br>
+             <button class="btn" style="color: red;" (click)="removeFromCart(item.productId,item.productSize)" >Remove</button>
+          </div>
+        </div>
+      </td>
+
+      <td >quantity: <input type="number" style="width: 50px;" min="1" [(ngModel)]="item.orderQuantity" (change)="updateCartTotal(item,1,'q')"></td>
+
+     <td><div>
+      <select (change)="updateCartTotal(item,0,'s')" name="productSize" id="size" [(ngModel)]="item.productSize">
+        <option value="s" >S</option>
+        <option value="m" >M</option>
+        <option value="l" >L</option>
+        <option value="xl" >XL</option>
+        <option value="xxl" >XXL</option>
+      </select>
+    </div>
+    </td>
+
+      <td    style="text-align: start; padding-left: 35px;"> <i class="fa-solid fa-indian-rupee-sign"></i
+              >{{ item.totalPrice && item.orderQuantity ? item.totalPrice * item.orderQuantity : 0 }}
+            </td>
+
+              </tr>
+    <!-- </tr> -->
+  </table>
+
+
+</div>
+
+
+  <div class="total-price" *ngIf="userService.td">
+    <table >
+      <tr>
+        <td>SubTotal</td>
+        <td><i class="fa-solid fa-indian-rupee-sign">{{ total }}</i></td>
+
+      </tr>
+
+    </table>
+  </div>
+  <button (click)="order()" routerLink="/payments" style="background-color: #fa9393; ;margin-left: 65%; border: 2px solid #fa9393; width: 125px;" *ngIf="userService.td">BuyNow</button>
+<!-- </div> -->
+<div *ngIf="!userService.td"  style="text-align: center;">you dont have any products in cart</div>
+
+
+<!--
+</body>
+</html> -->
